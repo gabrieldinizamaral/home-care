@@ -29,6 +29,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
+	compile("mysql:mysql-connector-java:5.1.13")
     compile("com.h2database:h2")
     testCompile("junit:junit")
 }
