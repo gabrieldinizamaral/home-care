@@ -1,4 +1,4 @@
-package homecare.configuration;
+package br.com.homecare.configuration;
 
 import java.util.Map;
 
@@ -32,7 +32,7 @@ public class PersistenceJPAConfiguration {
 		return builder
 				.dataSource(dataSource)
 				.properties(getProperties())
-				.packages("homecare").build();
+				.packages("br.com.homecare.model").build();
 	}
 
 	private Map<String, String> getProperties() {

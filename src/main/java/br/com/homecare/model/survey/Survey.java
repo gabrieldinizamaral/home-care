@@ -1,4 +1,4 @@
-package homecare.survey;
+package br.com.homecare.model.survey;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,8 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import homecare.carer.Carer;
-import homecare.patient.Patient;
+import br.com.homecare.model.carer.Carer;
+import br.com.homecare.model.patient.Patient;
 
 @Entity
 public class Survey {
@@ -16,9 +16,9 @@ public class Survey {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
-	private String start;
+	private String startAt;
 
-	private String end;
+	private String endAt;
 
 	@ManyToOne
 	private Carer carer;

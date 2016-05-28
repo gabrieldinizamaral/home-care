@@ -1,6 +1,7 @@
-package homecare.survey.controller;
+package br.com.homecare.model.survey.controller;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import homecare.carer.Carer;
-import homecare.carer.repository.CarerRepository;
-import homecare.survey.Survey;
-import homecare.survey.repository.SurveyRepository;
+import br.com.homecare.model.carer.Carer;
+import br.com.homecare.model.carer.repository.CarerRepository;
+import br.com.homecare.model.survey.Survey;
+import br.com.homecare.model.survey.repository.SurveyRepository;
 
 @RestController
 public class SurveyController {
@@ -25,8 +26,16 @@ public class SurveyController {
 
 	@RequestMapping(path = "carer/{carerId}/surveys", method = RequestMethod.GET)
 	public @ResponseBody Collection<Survey> getSurveysBy(@PathVariable Integer carerId) {
-		Carer carer = carerRepository.findById(carerId);
-		return surveyRepository.findByCarer(carer);
+		Optional<Carer> carer = carerRepository.findById(carerId);
+
+		Collection<Survey> surveys = surveyRepository.findByCarer(carer.get());
+
+		return surveys;
+	}
+
+	@RequestMapping(path = "surveys", method = RequestMethod.POST)
+	public @ResponseBody Survey save(Survey survey) {
+		return surveyRepository.save(survey);
 	}
 
 }

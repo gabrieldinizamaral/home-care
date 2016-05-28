@@ -30,6 +30,7 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
 	compile("mysql:mysql-connector-java:5.1.13")
+	compile("org.apache.commons:commons-lang3:3.4")
     compile("com.h2database:h2")
     testCompile("junit:junit")
 }

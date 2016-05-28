@@ -1,4 +1,4 @@
-package homecare.patient;
+package br.com.homecare.model.patient;
 
 public enum Gender {
 

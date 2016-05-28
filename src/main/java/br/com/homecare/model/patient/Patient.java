@@ -1,4 +1,4 @@
-package homecare.patient;
+package br.com.homecare.model.patient;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,5 +22,7 @@ public class Patient {
 	private Gender gender;
 
 	private String address;
+
+	private String Registry;
 
 }
