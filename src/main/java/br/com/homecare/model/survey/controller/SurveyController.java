@@ -14,6 +14,7 @@ import br.com.homecare.model.carer.Carer;
 import br.com.homecare.model.carer.repository.CarerRepository;
 import br.com.homecare.model.survey.Survey;
 import br.com.homecare.model.survey.repository.SurveyRepository;
+import br.com.homecare.model.surveyform.Section;
 
 @RestController
 public class SurveyController {
@@ -31,11 +32,6 @@ public class SurveyController {
 		Collection<Survey> surveys = surveyRepository.findByCarer(carer.get());
 
 		return surveys;
-	}
-
-	@RequestMapping(path = "surveys", method = RequestMethod.POST)
-	public @ResponseBody Survey save(Survey survey) {
-		return surveyRepository.save(survey);
 	}
 
 }
