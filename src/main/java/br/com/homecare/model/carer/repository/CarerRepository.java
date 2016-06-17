@@ -10,6 +10,6 @@ import br.com.homecare.model.carer.Carer;
 @Service
 public interface CarerRepository extends CrudRepository<Carer, Long> {
 
-	Optional<Carer> findById(Integer carerId);
+	Optional<Carer> findById(Long homecareId);
 
 }

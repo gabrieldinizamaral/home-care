@@ -1,23 +1,14 @@
-package br.com.homecare.model.patient;
+package br.com.homecare.model.survey.response;
 
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.homecare.model.LocalDateCustomSerializer;
+import br.com.homecare.model.patient.Gender;
 
-@Entity
-public class Patient {
+public class PatientResponse {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
@@ -25,7 +16,6 @@ public class Patient {
 	@JsonSerialize(using = LocalDateCustomSerializer.class)
 	private LocalDate birth;
 
-	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
 	private String address;
@@ -34,6 +24,10 @@ public class Patient {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -75,5 +69,5 @@ public class Patient {
 	public void setRegistry(String registry) {
 		Registry = registry;
 	}
-
+	
 }

@@ -3,7 +3,6 @@ package br.com.homecare.model.surveyform;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +19,7 @@ public class Section {
 
 	private Long previousId;
 
-	@OneToMany(mappedBy = "section", targetEntity = Field.class, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "section", targetEntity = Field.class)
 	private List<Field> fields;
 
 	public Long getId() {

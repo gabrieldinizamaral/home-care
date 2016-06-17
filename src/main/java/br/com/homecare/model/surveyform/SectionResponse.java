@@ -3,7 +3,7 @@ package br.com.homecare.model.surveyform;
 import java.io.Serializable;
 import java.util.List;
 
-public class SectionTO implements Serializable{
+public class SectionResponse implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -11,7 +11,7 @@ public class SectionTO implements Serializable{
 
 	private String name;
 
-	private List<FieldTO> fields;
+	private List<FieldResponse> fields;
 
 	public Long getId() {
 		return id;
@@ -29,11 +29,11 @@ public class SectionTO implements Serializable{
 		this.name = name;
 	}
 
-	public List<FieldTO> getFields() {
+	public List<FieldResponse> getFields() {
 		return fields;
 	}
 
-	public void setFields(List<FieldTO> fields) {
+	public void setFields(List<FieldResponse> fields) {
 		this.fields = fields;
 	}
 

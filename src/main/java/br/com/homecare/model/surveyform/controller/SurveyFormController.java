@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.homecare.model.surveyform.Section;
-import br.com.homecare.model.surveyform.SectionTO;
-import br.com.homecare.model.surveyform.SectionsToSactionsTOConverter;
+import br.com.homecare.model.surveyform.SectionResponse;
+import br.com.homecare.model.surveyform.SectionsToSactionsResponseConverter;
 import br.com.homecare.model.surveyform.repository.SurveyFormRepository;
 
 @RestController
 public class SurveyFormController {
 
 	@Autowired
-	private SectionsToSactionsTOConverter converter;
+	private SectionsToSactionsResponseConverter converter;
 	
 	@Autowired
 	private SurveyFormRepository surveyFormRepository;
 
-	@RequestMapping(path = "surveys", method = RequestMethod.GET)
-	public @ResponseBody Collection<SectionTO> getSurveyForm() {
+	@RequestMapping(path = "survey-form", method = RequestMethod.GET)
+	public @ResponseBody Collection<SectionResponse> getSurveyForm() {
 		Collection<Section> sections = (Collection<Section>) surveyFormRepository.findAll();
 		return converter.convert(sections);
 	}

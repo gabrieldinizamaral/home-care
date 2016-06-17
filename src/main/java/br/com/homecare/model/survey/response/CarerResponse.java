@@ -1,15 +1,7 @@
-package br.com.homecare.model.carer;
+package br.com.homecare.model.survey.response;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class CarerResponse {
 
-@Entity
-public class Carer {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	private String name;
@@ -18,6 +10,10 @@ public class Carer {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -35,5 +31,5 @@ public class Carer {
 	public void setRegistry(String registry) {
 		this.registry = registry;
 	}
-
+	
 }
