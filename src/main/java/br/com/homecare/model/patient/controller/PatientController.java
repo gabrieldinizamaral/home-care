@@ -3,9 +3,9 @@ package br.com.homecare.model.patient.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.homecare.model.patient.Patient;
@@ -18,8 +18,13 @@ public class PatientController {
 	private PatientRepository patientRepository;
 
 	@RequestMapping(path = "/patients", method = RequestMethod.GET)
-	public @ResponseBody List<Patient> get(){
-		return (List<Patient>) patientRepository.findAll();
+	public ResponseEntity get(){
+		List<Patient> patients = (List<Patient>) patientRepository.findAll();
+		if (patients.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(patients);
+		}
 	}
 	
 }
