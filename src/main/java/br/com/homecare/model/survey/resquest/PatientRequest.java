@@ -2,6 +2,10 @@ package br.com.homecare.model.survey.resquest;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.homecare.model.LocalDateCustomSerializer;
@@ -9,15 +13,19 @@ import br.com.homecare.model.patient.Gender;
 
 public class PatientRequest {
 
+	@NotEmpty
 	private String name;
 
-	@JsonSerialize(using = LocalDateCustomSerializer.class)
+	@NotNull @JsonSerialize(using = LocalDateCustomSerializer.class)
 	private LocalDate birth;
 
+	@NotNull
 	private Gender gender;
 
+	@NotEmpty
 	private String address;
 
+	@NotEmpty
 	private String Registry;
 
 	public String getName() {

@@ -6,11 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Section {
+public class SurveyForm {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +17,15 @@ public class Section {
 
 	private String name;
 
-	@OneToMany(mappedBy = "section", targetEntity = Field.class)
-	private List<Field> fields;
-
-	@ManyToOne
-	private SurveyForm surveyForm;
+	@OneToMany(mappedBy = "surveyForm")
+	private List<Section> sections; 
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -36,20 +36,12 @@ public class Section {
 		this.name = name;
 	}
 
-	public List<Field> getFields() {
-		return fields;
+	public List<Section> getSections() {
+		return sections;
 	}
 
-	public void setFields(List<Field> fields) {
-		this.fields = fields;
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
-
-	public SurveyForm getSurveyForm() {
-		return surveyForm;
-	}
-
-	public void setSurveyForm(SurveyForm surveyForm) {
-		this.surveyForm = surveyForm;
-	} 
 
 }

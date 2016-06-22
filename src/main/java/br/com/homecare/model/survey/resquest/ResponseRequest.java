@@ -1,9 +1,15 @@
 package br.com.homecare.model.survey.resquest;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class ResponseRequest {
 
+	@NotNull
 	private Long field;
-	
+
+	@NotEmpty
 	private String response;
 
 	public Long getField() {

@@ -30,7 +30,7 @@ public class Patient {
 
 	private String address;
 
-	private String Registry;
+	private String registry;
 
 	public Long getId() {
 		return id;
@@ -69,11 +69,11 @@ public class Patient {
 	}
 
 	public String getRegistry() {
-		return Registry;
+		return registry;
 	}
 
 	public void setRegistry(String registry) {
-		Registry = registry;
+		this.registry = registry;
 	}
 
 }

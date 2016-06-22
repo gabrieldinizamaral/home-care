@@ -1,15 +1,15 @@
 package br.com.homecare.model.surveyform.repository;
 
-import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import br.com.homecare.model.surveyform.Section;
+import br.com.homecare.model.surveyform.SurveyForm;
 
 @Service
-public interface SurveyFormRepository extends CrudRepository<Section, Long> {
+public interface SurveyFormRepository extends CrudRepository<SurveyForm, Long> {
 
-	public Collection<Section> findAllByOrderByIdAsc();
+	Optional<SurveyForm> findById(Long surveyFormId);
 
 }

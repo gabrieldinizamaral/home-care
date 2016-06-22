@@ -4,22 +4,28 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.homecare.model.OffsetDateTimeCustomSerializer;
 
 public class SurveyRequest {
 
-	@JsonSerialize(using = OffsetDateTimeCustomSerializer.class)
+	@NotNull @JsonSerialize(using = OffsetDateTimeCustomSerializer.class)
 	private OffsetDateTime startAt;
 
-	@JsonSerialize(using = OffsetDateTimeCustomSerializer.class)
+	@NotNull @JsonSerialize(using = OffsetDateTimeCustomSerializer.class)
 	private OffsetDateTime endAt;
 
+	@Valid @NotNull
 	private CarerRequest carer;
-	
+
+	@Valid @NotNull
 	private PatientRequest patient;
-	
+
+	@Valid
 	private List<ResponseRequest> responses = new ArrayList<ResponseRequest>();
 
 	public OffsetDateTime getStartAt() {

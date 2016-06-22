@@ -2,6 +2,8 @@ package br.com.homecare.model.survey.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +32,7 @@ public class SurveyController {
 	private ConversionService converter;
 
 	@RequestMapping(path = "surveys", method = RequestMethod.POST)
-	public ResponseEntity post(@RequestBody SurveyRequest surveyRequest) {
+	public ResponseEntity post(@RequestBody @Valid SurveyRequest surveyRequest) {
 		Optional<Carer> carer = carerRepository.findById(surveyRequest.getCarer().getId());
 
 		Survey survey = null;

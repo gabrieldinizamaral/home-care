@@ -30,8 +30,6 @@ public class Field {
 	@JoinColumn
 	private Section section;
 
-	private Long previousId;
-
 	private Long fieldFatherId;
 
 	public Long getId() {
@@ -68,14 +66,6 @@ public class Field {
 
 	public void setSection(Section section) {
 		this.section = section;
-	}
-
-	public Long getPreviousId() {
-		return previousId;
-	}
-
-	public void setPreviousId(Long previousId) {
-		this.previousId = previousId;
 	}
 
 	public Long getFieldFatherId() {

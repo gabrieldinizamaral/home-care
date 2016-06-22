@@ -1,33 +1,35 @@
 package br.com.homecare.model.surveyform.controller;
 
-import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.homecare.model.surveyform.Section;
-import br.com.homecare.model.surveyform.SectionsToSactionsResponseConverter;
+import br.com.homecare.model.surveyform.SurveyForm;
+import br.com.homecare.model.surveyform.SurveyFormResponse;
 import br.com.homecare.model.surveyform.repository.SurveyFormRepository;
 
 @RestController
 public class SurveyFormController {
 
 	@Autowired
-	private SectionsToSactionsResponseConverter converter;
-	
+	private ConversionService converter;
+
 	@Autowired
 	private SurveyFormRepository surveyFormRepository;
 
-	@RequestMapping(path = "survey-form", method = RequestMethod.GET)
-	public ResponseEntity getSurveyForm() {
-		Collection<Section> sections = (Collection<Section>) surveyFormRepository.findAll();
-		if (sections.isEmpty()) {
-			return ResponseEntity.notFound().build();
+	@RequestMapping(path = "survey-forms/{surveyFormId}", method = RequestMethod.GET)
+	public ResponseEntity getSurveyForm(@RequestBody Long surveyFormId) {
+		Optional<SurveyForm> surveyForm = surveyFormRepository.findById(surveyFormId);
+		if (surveyForm.isPresent()) {
+			return ResponseEntity.ok(converter.convert(surveyForm.get(), SurveyFormResponse.class));
 		} else {
-			return ResponseEntity.ok(converter.convert(sections));
+			return ResponseEntity.notFound().build();
 		}
 	}
 
