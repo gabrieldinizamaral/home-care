@@ -1,5 +1,7 @@
 package br.com.homecare.model.surveyform;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import br.com.homecare.model.survey.Type;
 
@@ -30,7 +33,9 @@ public class Field {
 	@JoinColumn
 	private Section section;
 
-	private Long fieldFatherId;
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "field_father_id")
+	private List<Field> fields;
 
 	public Long getId() {
 		return id;
@@ -68,12 +73,11 @@ public class Field {
 		this.section = section;
 	}
 
-	public Long getFieldFatherId() {
-		return fieldFatherId;
+	public List<Field> getFields() {
+		return fields;
 	}
 
-	public void setFieldFatherId(Long fieldFatherId) {
-		this.fieldFatherId = fieldFatherId;
+	public void setFields(List<Field> fields) {
+		this.fields = fields;
 	}
-
 }

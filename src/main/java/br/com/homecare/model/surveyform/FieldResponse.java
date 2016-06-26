@@ -18,6 +18,8 @@ public class FieldResponse implements Serializable {
 
 	private List<String> options = new ArrayList<String>();
 
+	private List<FieldResponse> fields;
+
 	public Long getId() {
 		return id;
 	}
@@ -50,4 +52,11 @@ public class FieldResponse implements Serializable {
 		this.options = options;
 	}
 
+	public List<FieldResponse> getFields() {
+		return fields;
+	}
+
+	public void setFields(List<FieldResponse> fields) {
+		this.fields = fields;
+	}
 }

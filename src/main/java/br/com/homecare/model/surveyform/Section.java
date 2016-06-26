@@ -3,6 +3,7 @@ package br.com.homecare.model.surveyform;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Section {
 
 	private String name;
 
-	@OneToMany(mappedBy = "section", targetEntity = Field.class)
+	@OneToMany(mappedBy = "section", targetEntity = Field.class, fetch = FetchType.EAGER)
 	private List<Field> fields;
 
 	@ManyToOne

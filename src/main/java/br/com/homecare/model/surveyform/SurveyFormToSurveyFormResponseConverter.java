@@ -38,20 +38,37 @@ public class SurveyFormToSurveyFormResponseConverter implements Converter<Survey
 	private List<FieldResponse> createFieldsFrom(List<Field> fields) {
 		List<FieldResponse> fieldsResponse = new ArrayList<FieldResponse>();
 
-		fields.forEach(field -> {
-
-			FieldResponse fieldResponse = new FieldResponse();
-
-			fieldResponse.setId(field.getId());
-			fieldResponse.setLabel(field.getLabel());
-			fieldResponse.setOptions(breakInList(field.getOptions()));
-			fieldResponse.setType(field.getType());
-
-			fieldsResponse.add(fieldResponse);
-
+		fields.stream()
+		.filter(field -> !field.getFields().isEmpty())
+		.forEach(field -> {
+			fieldsResponse.add(copyField(field));
 		});
 
 		return fieldsResponse;
+	}
+
+	private FieldResponse copyField(Field field) {
+		FieldResponse fieldResponse = new FieldResponse();
+
+		fieldResponse.setId(field.getId());
+		fieldResponse.setLabel(field.getLabel());
+		if (field.getOptions() != null) {
+			fieldResponse.setOptions(breakInList(field.getOptions()));
+		}
+
+		fieldResponse.setType(field.getType());
+
+		if (!field.getFields().isEmpty()) {
+			List<FieldResponse> fieldsResponse = new ArrayList<>();
+
+			field.getFields().forEach(parentField -> {
+				fieldsResponse.add(copyField(parentField));
+			});
+
+			fieldResponse.setFields(fieldsResponse);
+		}
+
+		return fieldResponse;
 	}
 
 	private List<String> breakInList(String options) {
