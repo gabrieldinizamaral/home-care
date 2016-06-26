@@ -7,6 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.homecare.model.OffsetDateTimeCustomSerializer;
+import br.com.homecare.model.patient.PatientResponse;
 
 public class SurveyResponse {
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.homecare.model.carer.Carer;
 import br.com.homecare.model.patient.Patient;
+import br.com.homecare.model.patient.PatientResponse;
 import br.com.homecare.model.survey.Response;
 import br.com.homecare.model.survey.Survey;
 
@@ -45,7 +46,7 @@ public class SurveyToSurveyResponseConverter  implements Converter<Survey, Surve
 		patientResponse.setName(patient.getName());
 		patientResponse.setAddress(patient.getAddress());
 		patientResponse.setBirth(patient.getBirth());
-		patientResponse.setGender(patient.getGender());
+		patientResponse.setGender(patient.getGender().getValue());
 		patientResponse.setRegistry(patient.getRegistry());
 
 		return patientResponse;
