@@ -9,10 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import br.com.homecare.model.LocalDateCustomSerializer;
-
 @Entity
 public class Patient {
 
@@ -22,7 +18,6 @@ public class Patient {
 
 	private String name;
 
-	@JsonSerialize(using = LocalDateCustomSerializer.class)
 	private LocalDate birth;
 
 	@Enumerated(EnumType.STRING)

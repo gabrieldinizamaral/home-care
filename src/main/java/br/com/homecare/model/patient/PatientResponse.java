@@ -1,11 +1,10 @@
-package br.com.homecare.model.survey.response;
+package br.com.homecare.model.patient;
 
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import br.com.homecare.model.LocalDateCustomSerializer;
-import br.com.homecare.model.patient.Gender;
 
 public class PatientResponse {
 
@@ -16,11 +15,11 @@ public class PatientResponse {
 	@JsonSerialize(using = LocalDateCustomSerializer.class)
 	private LocalDate birth;
 
-	private Gender gender;
+	private String gender;
 
 	private String address;
 
-	private String Registry;
+	private String registry;
 
 	public Long getId() {
 		return id;
@@ -46,11 +45,11 @@ public class PatientResponse {
 		this.birth = birth;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -63,11 +62,11 @@ public class PatientResponse {
 	}
 
 	public String getRegistry() {
-		return Registry;
+		return registry;
 	}
 
 	public void setRegistry(String registry) {
-		Registry = registry;
+		this.registry = registry;
 	}
-	
+
 }
