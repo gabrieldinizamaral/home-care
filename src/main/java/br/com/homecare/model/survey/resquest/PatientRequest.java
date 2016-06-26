@@ -20,7 +20,7 @@ public class PatientRequest {
 	private LocalDate birth;
 
 	@NotNull
-	private Gender gender;
+	private String gender;
 
 	@NotEmpty
 	private String address;
@@ -44,11 +44,11 @@ public class PatientRequest {
 		this.birth = birth;
 	}
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

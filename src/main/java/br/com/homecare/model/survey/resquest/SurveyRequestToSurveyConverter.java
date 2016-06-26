@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import br.com.homecare.model.patient.Gender;
 import br.com.homecare.model.patient.Patient;
 import br.com.homecare.model.survey.Response;
 import br.com.homecare.model.survey.Survey;
@@ -30,7 +31,7 @@ public class SurveyRequestToSurveyConverter implements Converter<SurveyRequest, 
 		patient.setName(patientRequest.getName());
 		patient.setAddress(patientRequest.getAddress());
 		patient.setBirth(patientRequest.getBirth());
-		patient.setGender(patientRequest.getGender());
+		patient.setGender(Gender.fromValue(patientRequest.getGender()));
 		patient.setRegistry(patientRequest.getRegistry());
 
 		return patient;
