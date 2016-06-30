@@ -19,7 +19,7 @@ public enum Gender {
 
 	public static Gender fromValue(String gender) {
 		return EnumSet.of(FEMALE, MALE).stream()
-		.filter(genderEnum -> genderEnum.getValue() == gender).findFirst()
+		.filter(genderEnum -> genderEnum.getValue().equals(gender)).findFirst()
 		.orElseThrow(() -> new IllegalArgumentException("Gender [" + gender + "] is not valid"));
 	}
 
