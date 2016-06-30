@@ -1,5 +1,7 @@
 package br.com.homecare.model.patient;
 
+import java.util.EnumSet;
+
 public enum Gender {
 
 	FEMALE("feminino"),
@@ -16,10 +18,9 @@ public enum Gender {
 	}
 
 	public static Gender fromValue(String gender) {
-		if (gender == "feminino") {
-			return FEMALE;
-		}
-		return MALE;
+		return EnumSet.of(FEMALE, MALE).stream()
+		.filter(genderEnum -> genderEnum.getValue() == gender).findFirst()
+		.orElseThrow(() -> new IllegalArgumentException("Gender [" + gender + "] is not valid"));
 	}
 
 }

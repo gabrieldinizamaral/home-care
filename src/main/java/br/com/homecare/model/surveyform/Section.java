@@ -29,6 +29,10 @@ public class Section {
 		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -51,6 +55,5 @@ public class Section {
 
 	public void setSurveyForm(SurveyForm surveyForm) {
 		this.surveyForm = surveyForm;
-	} 
-
+	}
 }

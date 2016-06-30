@@ -8,8 +8,12 @@ import java.util.regex.Pattern;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import br.com.homecare.model.survey.Type;
+
 @Component
 public class SurveyFormToSurveyFormResponseConverter implements Converter<SurveyForm, SurveyFormResponse> {
+
+	List<FieldResponse> fieldsToRemove;
 
 	@Override
 	public SurveyFormResponse convert(SurveyForm surveyForm) {
@@ -38,11 +42,13 @@ public class SurveyFormToSurveyFormResponseConverter implements Converter<Survey
 	private List<FieldResponse> createFieldsFrom(List<Field> fields) {
 		List<FieldResponse> fieldsResponse = new ArrayList<FieldResponse>();
 
-		fields.stream()
-		.filter(field -> !field.getFields().isEmpty())
-		.forEach(field -> {
+		fieldsToRemove = new ArrayList<FieldResponse>();
+
+		fields.forEach(field -> {
 			fieldsResponse.add(copyField(field));
 		});
+
+		fieldsResponse.removeAll(fieldsToRemove);
 
 		return fieldsResponse;
 	}
@@ -58,11 +64,14 @@ public class SurveyFormToSurveyFormResponseConverter implements Converter<Survey
 
 		fieldResponse.setType(field.getType());
 
-		if (!field.getFields().isEmpty()) {
+		if (field.getType() == Type.MULTIPLE_FIELD) {
 			List<FieldResponse> fieldsResponse = new ArrayList<>();
 
 			field.getFields().forEach(parentField -> {
-				fieldsResponse.add(copyField(parentField));
+				FieldResponse copiedField = copyField(parentField);
+
+				fieldsToRemove.add(copiedField);
+				fieldsResponse.add(copiedField);
 			});
 
 			fieldResponse.setFields(fieldsResponse);

@@ -24,6 +24,10 @@ public class Carer {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -39,5 +43,4 @@ public class Carer {
 	public void setRegistry(String registry) {
 		this.registry = registry;
 	}
-
 }
