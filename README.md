@@ -54,6 +54,7 @@ Estão implementados 4 endpoints:
     ]
 }
 ```
+- Endpoint para buscar formulário por paciente `/patients/{id do paciente}/surveys`
 
 ### Pontos de melhoria
 
